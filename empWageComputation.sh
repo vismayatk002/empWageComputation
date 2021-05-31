@@ -17,26 +17,26 @@ do
 	attendance=$(($RANDOM%2))
 	case $attendance in
 		$isPresent )
-						#echo "Employee is Present"
+				#echo "Employee is Present"
 
-						empType=$(($RANDOM%2))
-						((totalAttendance++))
-						case $empType in
-							$fullTime )
-									#echo "Employee Type :Full Time"
+				empType=$(($RANDOM%2))
+				((totalAttendance++))
+				case $empType in
+					$fullTime )
+							#echo "Employee Type :Full Time"
 
-									totalHrs=$(($totalHrs + $fullTimeHr))
-									fullTimeEmpWage=$(($wagePerHr * $fullTimeHr))
-									monthlyEmpWage=$(($monthlyEmpWage + $fullTimeEmpWage))
-		    				;;
-		    			$partTime )
-									#echo "Employee Type :Part Time"
+							totalHrs=$(($totalHrs + $fullTimeHr))
+							fullTimeEmpWage=$(($wagePerHr * $fullTimeHr))
+							monthlyEmpWage=$(($monthlyEmpWage + $fullTimeEmpWage))
+			    		;;
+					$partTime )
+							#echo "Employee Type :Part Time"
 
-									totalHrs=$(($totalHrs + $partTimeHr))
-	 								partTimeEmpWage=$(($wagePerHr * $partTimeHr))
-		    						monthlyEmpWage=$(($monthlyEmpWage + $partTimeEmpWage))
-		    				;;
-	 	            esac
+							totalHrs=$(($totalHrs + $partTimeHr))
+							partTimeEmpWage=$(($wagePerHr * $partTimeHr))
+    						monthlyEmpWage=$(($monthlyEmpWage + $partTimeEmpWage))
+    					;;
+				esac
 			;;
 	esac
 done
