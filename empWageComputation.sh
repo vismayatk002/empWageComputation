@@ -34,7 +34,7 @@ do
 
 							totalHrs=$(($totalHrs + $partTimeHr))
 							partTimeEmpWage=$(($wagePerHr * $partTimeHr))
-    						monthlyEmpWage=$(($monthlyEmpWage + $partTimeEmpWage))
+							monthlyEmpWage=$(($monthlyEmpWage + $partTimeEmpWage))
     					;;
 				esac
 			;;
