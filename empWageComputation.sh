@@ -14,29 +14,24 @@ partTime=0
 randomnumber=$(($RANDOM%2))
 
 case $randomnumber in
-	$isPresent ) echo "Employee is Present"
-
-				empType=$(($RANDOM%2))
- 	           
- 	            case $empType in
- 	            	$fullTime ) echo "Employee Type :Full Time"
-								fullTimeEmpWage=$(($wagePerHr*$fullTimeHr))
-	    						echo "Employee Wage =" $fullTimeEmpWage
-	    					;;	
-	    			$partTime ) echo "Employee Type :Part Time"
-
- 								partTimeEmpWage=$(($wagePerHr*$partTimeHr))
-	    						echo "Employee Wage =" $partTimeEmpWage	
- 	            			;;
- 	            esac
-
-		;;
-	$isAbsent  ) echo "Employee is Absent"
-		
-		;;
+	$isPresent )
+		echo "Employee is Present"
+		empType=$(($RANDOM%2))
+		case $empType in
+			$fullTime )
+				echo "Employee Type :Full Time"
+				fullTimeEmpWage=$(($wagePerHr*$fullTimeHr))
+				echo "Employee Wage =" $fullTimeEmpWage
+			;;
+			$partTime )
+				echo "Employee Type :Part Time"
+				partTimeEmpWage=$(($wagePerHr*$partTimeHr))
+				echo "Employee Wage =" $partTimeEmpWage
+			;;
+		esac
+	;;
+	$isAbsent  )
+		echo "Employee is Absent"
+	;;
 
 esac
-
-
- 
-
