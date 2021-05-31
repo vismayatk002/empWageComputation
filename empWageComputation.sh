@@ -3,7 +3,6 @@
  echo " Welcome to Employee Wage Computation Program "
 
 
-# Check Employee is Present or Absent
 ispresent=1
 wagePerHr=20
 fullDayHr=8
