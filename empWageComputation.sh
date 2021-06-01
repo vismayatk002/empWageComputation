@@ -10,7 +10,8 @@ totalHrs=0
 fullTime=1
 partTime=0
 totalAttendance=0
-dayCount=1
+day=1
+declare -A dailyWage
 function workHrs(){
 	empType=$1
 	if [ $empType -eq $fullTime ]
@@ -21,10 +22,15 @@ function workHrs(){
 		partTimeHr=8
 		workHr=$(($partTimeHr))
 	fi
+
 	echo $workHr
 }
 while [[ $totalAttendance -lt 20 && $totalHrs -lt 100 ]]
 do
+	if [ $day -gt 5 ]
+	then
+		day=1
+	fi
 	attendance=$(($RANDOM%2))
 	case $attendance in
 		$isPresent )
@@ -38,7 +44,7 @@ do
 				#workHrs $empType
 				hr=$(workHrs $empType)
 				#echo $hr
-				dailyWage[dayCount]=$(($hr * $wagePerHr))
+				dayWage=$(($hr * $wagePerHr))
 				totalHrs=$(($totalHrs + $hr))
 				fullTimeEmpWage=$(($wagePerHr * $hr))
 				monthlyEmpWage=$(($monthlyEmpWage + $fullTimeEmpWage))
@@ -48,22 +54,27 @@ do
 				#workHrs $empType
 				hr=$(workHrs $empType)
 				#echo $hr
-				dailyWage[dayCount]=$(($hr * $wagePerHr))
+				dayWage=$(($hr * $wagePerHr))
 				totalHrs=$(($totalHrs + $hr))
 				partTimeEmpWage=$(($wagePerHr * $hr))
 				monthlyEmpWage=$(($monthlyEmpWage + $partTimeEmpWage))
     		;;
 
 		esac
-		((dayCount++))
+		
+		if [ -v dailyWage[$day] ]
+		then
+			dailyWage[$day]=$((dailyWage[$day] + $dayWage))
+		else
+			dailyWage[$day]=$(($dayWage))
+		fi
 		;;
 	esac
+	((day++))
+
 done
 echo "Monthly Wage =" $monthlyEmpWage
-
 echo "Total Attendance :" $totalAttendance
-
 echo "Total Hours :" $totalHrs
-
 echo "DailyWage :" ${dailyWage[@]}
 
