@@ -13,36 +13,33 @@ fullTime=1
 partTime=0
 workingDays=20
 randomnumber=$(($RANDOM%2))
-
 case $randomnumber in
-	$isPresent ) echo "Employee is Present"
+	$isPresent )
+		echo "Employee is Present"
+		empType=$(($RANDOM%2)
+		case $empType in
+			$fullTime )
+				echo "Employee Type :Full Time"
 
-				empType=$(($RANDOM%2))
- 	           
- 	            case $empType in
- 	            	$fullTime ) echo "Employee Type :Full Time"
+				fullTimeEmpWage=$(($wagePerHr*$fullTimeHr))
+				echo "Employee Wage =" $fullTimeEmpWage
+				monthlyEmpWage=$((($wagePerHr*$fullTimeHr) * $workingDays))
+				echo "Monthly Wage =" $monthlyEmpWage
+			;;
+			$partTime )
+				echo "Employee Type :Part Time"
 
-								fullTimeEmpWage=$(($wagePerHr*$fullTimeHr))
-	    						echo "Employee Wage =" $fullTimeEmpWage
+				partTimeEmpWage=$(($wagePerHr*$partTimeHr))
+				echo "Employee Wage =" $partTimeEmpWage
+				monthlyEmpWage=$((($wagePerHr*$partTimeHr) * $workingDays))
+				echo "Monthly Wage =" $monthlyEmpWage
+			;;
+		esac
 
-								monthlyEmpWage=$((($wagePerHr*$fullTimeHr) * $workingDays))
-	    						echo "Monthly Wage =" $monthlyEmpWage
-
-	    					;;	
-	    			$partTime ) echo "Employee Type :Part Time"
-
- 								partTimeEmpWage=$(($wagePerHr*$partTimeHr))
-	    						echo "Employee Wage =" $partTimeEmpWage
-
-	    						monthlyEmpWage=$((($wagePerHr*$partTimeHr) * $workingDays))
-	    						echo "Monthly Wage =" $monthlyEmpWage
- 	            			;;
- 	            esac
-
-		;;
-	$isAbsent  ) echo "Employee is Absent"
-		
-		;;
+	;;
+	$isAbsent  )
+		echo "Employee is Absent"
+	;;
 
 esac
 
